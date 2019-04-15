@@ -1,11 +1,7 @@
 var mongoose = require('mongoose');
-var uri = "mongodb+srv://admin:<password>@clusterrega-oesvq.mongodb.net/test?retryWrites=true";
-uri = uri.replace("test", "Registan")
-
-
-mongoose.connect(uri, {useNewUrlParser: true, useCreateIndex: true});
-
-
+var uri = "mongodb+srv://admin:Password12345678@clusterrega-oesvq.mongodb.net/test?retryWrites=true";
+var uri = uri.replace("test", "Registan");
+mongoose.connect('mongodb://localhost:27017/all', {useNewUrlParser: true});
 var async = require('async')
 var Hero = require('./models/hero').Hero;
 // очистим бд
@@ -22,27 +18,43 @@ function dropDB(callback){
 function insertHero(callback){
     async.parallel([
       function(callback){
-        var pig = new Hero({
-          nick: "Pig"
+        var Alice = new Hero({
+          nick: "Alice"
         })
-        pig.save(function(err,pig){
-          callback(err, "Pig")
-        })
-      },
-      function(callback){
-        var vinni = new Hero({
-          nick: "Vinni"
-        })
-        vinni.save(function(err,vinni){
-          callback(err,"vinni")
+        Alice.save(function(err,Alice){
+          callback(err, "Alice")
         })
       },
       function(callback){
-        var sova =new Hero({
-          nick: "Sova"
+        var Rabbit = new Hero({
+          nick: "Rabbit"
         })
-        sova.save(function(err,sova){
-          callback(err,"sova")
+        Rabbit.save(function(err,Rabbit){
+          callback(err,"Rabbit")
+        })
+      },
+      function(callback){
+        var Cat =new Hero({
+          nick: "Cat"
+        })
+        Cat.save(function(err,Cat){
+          callback(err,"Cat")
+        })
+      },
+      function(callback){
+        var Mad =new Hero({
+          nick: "Mad"
+        })
+        Mad.save(function(err,Mad){
+          callback(err,"Mad")
+        })
+      },
+      function(callback){
+        var Queen =new Hero({
+          nick: "Queen"
+        })
+        Queen.save(function(err,Queen){
+          callback(err,"Queen")
         })
       }
     ],
